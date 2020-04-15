@@ -2,21 +2,23 @@ package com.learning.mastermodernspring;
 
 import com.learning.mastermodernspring.basic.BinarySearch;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-@SpringBootApplication
+@Configuration
+@ComponentScan
 public class BasicDemoApplication {
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext applicationContext = SpringApplication.run(BasicDemoApplication.class, args);
+        try (AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(
+                BasicDemoApplication.class)) {
+            BinarySearch binarySearch1 = applicationContext.getBean(BinarySearch.class);
+            binarySearch1.search(new int[] {}, 1);
 
-        BinarySearch binarySearch1 = applicationContext.getBean(BinarySearch.class);
-        binarySearch1.search(new int[] {}, 1);
-
-        BinarySearch binarySearch2 = applicationContext.getBean(BinarySearch.class);
-        binarySearch2.search(new int[] {}, 1);
+            BinarySearch binarySearch2 = applicationContext.getBean(BinarySearch.class);
+            binarySearch2.search(new int[] {}, 1);
+        }
     }
 
 }
