@@ -18,6 +18,8 @@ public class BasicDemoApplication {
 
             BinarySearch binarySearch2 = applicationContext.getBean(BinarySearch.class);
             binarySearch2.search(new int[] {}, 1);
+
+            // after try-catch, the application context will automatically close
         }
     }
 
