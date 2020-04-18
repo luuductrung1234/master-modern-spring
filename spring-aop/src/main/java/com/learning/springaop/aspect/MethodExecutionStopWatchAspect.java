@@ -15,7 +15,7 @@ public class MethodExecutionStopWatchAspect {
     // What kind of method calls I would intercept
     // execution(* PACKAGE.*.*(..))
 
-    @Around("com.learning.springaop.aspect.CommonJoinPointConfig.businessLayerExecution()")
+    @Around("com.learning.springaop.aspect.CommonJoinPointConfig.trackTimeAnnotion()")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         long startTime = System.currentTimeMillis();
         Object result = joinPoint.proceed();

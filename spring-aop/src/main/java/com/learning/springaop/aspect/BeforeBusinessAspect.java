@@ -15,13 +15,13 @@ public class BeforeBusinessAspect {
     // What kind of method calls I would intercept
     // execution(* PACKAGE.*.*(..))
 
-    @Before("execution(* com.learning.springaop.business.*.*(..))")
+    @Before("com.learning.springaop.aspect.CommonJoinPointConfig.businessLayerExecution()")
     public void authorizeUser(JoinPoint joinPoint) {
         logger.info("Check for user access");
         logger.info("Allowed execution for {}", joinPoint);
     }
 
-    @Before("execution(* com.learning.springaop.business.*.*(..))")
+    @Before("com.learning.springaop.aspect.CommonJoinPointConfig.businessLayerExecution()")
     public void beforeRunMethodCall() {
         logger.info("Intercepted before method calls");
     }

@@ -17,21 +17,21 @@ public class CommonJoinPointConfig {
 
     @Pointcut("dataLayerExecution() && businessLayerExecution()")
     public void allLayerExecution() {
-
     }
 
     @Pointcut("bean(First*)")
     public void beanStartingWithFirst() {
-
     }
 
     @Pointcut("bean(*dao*)")
     public void beanContainingDAO() {
-
     }
 
-    @Pointcut("within(com.learning.springaop.data.*.*(..))")
+    @Pointcut("within(com.learning.springaop.data..*)")
     public void dataLayerExecutionWithWithin() {
+    }
 
+    @Pointcut("@annotation(com.learning.springaop.aspect.TrackTime)")
+    public void trackTimeAnnotion() {
     }
 }
