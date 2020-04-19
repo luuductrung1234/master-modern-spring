@@ -7,7 +7,6 @@ import com.learning.databasedemo.PersonRepository;
 import com.learning.databasedemo.entity.Person;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -17,13 +16,13 @@ public class JdbcPersonRepositoryImpl implements PersonRepository {
     JdbcTemplate jdbcTemplate;
 
     public List<Person> findAll() {
-        return jdbcTemplate.query("SELECT * FROM person", new BeanPropertyRowMapper<Person>(Person.class));
+        return jdbcTemplate.query("SELECT * FROM person", new PersonRowMapper());
     }
 
     @Override
     public Person findById(int id) {
         return jdbcTemplate.queryForObject("SELECT * FROM person WHERE id=?", new Object[] { id },
-                new BeanPropertyRowMapper<Person>(Person.class));
+                new PersonRowMapper());
     }
 
     @Override
