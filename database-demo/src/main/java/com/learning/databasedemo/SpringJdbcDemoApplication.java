@@ -12,7 +12,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class SpringJdbcDemoApplication implements CommandLineRunner {
 
     private Logger logger = LoggerFactory.getLogger(SpringJdbcDemoApplication.class);
