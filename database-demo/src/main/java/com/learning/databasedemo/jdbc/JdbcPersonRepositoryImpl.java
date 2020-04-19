@@ -7,10 +7,12 @@ import com.learning.databasedemo.PersonRepository;
 import com.learning.databasedemo.entity.Person;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@Qualifier("jdbc")
 public class JdbcPersonRepositoryImpl implements PersonRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;

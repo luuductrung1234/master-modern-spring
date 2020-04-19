@@ -2,12 +2,32 @@ package com.learning.databasedemo.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "person")
+// Using JPQU (Java Persistent Query Language)
+// This query language not execute on database's table, it execute on entity
+@NamedQuery(name = "Person.findAll", query = "SELECT p FROM Person p")
 public class Person {
+
+    @Id
+    @GeneratedValue
     private int id;
+
     private String name;
+
     private String location;
+
+    @Column(name = "birthDate")
     private Date birthDate;
 
+    // default constructor for Hibernate
     private Person() {
 
     }

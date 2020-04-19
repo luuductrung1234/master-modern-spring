@@ -13,16 +13,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringJdbcDemoApplication implements CommandLineRunner {
+public class SpringJpaDemoApplication implements CommandLineRunner {
 
-    private Logger logger = LoggerFactory.getLogger(SpringJdbcDemoApplication.class);
+    private Logger logger = LoggerFactory.getLogger(SpringJpaDemoApplication.class);
 
     @Autowired
-    @Qualifier("jdbc")
+    @Qualifier("jpa")
     PersonRepository personRepository;
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringJdbcDemoApplication.class, args);
+        SpringApplication.run(SpringJpaDemoApplication.class, args);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class SpringJdbcDemoApplication implements CommandLineRunner {
         logger.info("Delete User with id 10001 - Number of rows effected {}", personRepository.deleteById(10001));
 
         Person newPerson = new Person(10004, "Trung", "HCM", new Date());
-        logger.info("Insert new User with id 10004 - Number of rows effected {}", personRepository.insert(newPerson));
+        logger.info("Insert new User - Number of rows effected {}", personRepository.insert(newPerson));
 
         Person updatedPerson = new Person(10003, "Pieter (updated)", "Amsterdam", new Date());
         logger.info("Update User with id 10003 - Number of rows effected {}", personRepository.update(updatedPerson));
